@@ -1,15 +1,15 @@
 module github.com/windpowerstake/cerberus
 
-go 1.18
+go 1.19
 
 require (
-	github.com/CosmWasm/wasmd v0.29.1
-	github.com/cosmos/cosmos-sdk v0.45.10
-	github.com/cosmos/ibc-go/v3 v3.3.0
+	github.com/CosmWasm/wasmd v0.29.2
+	github.com/cosmos/cosmos-sdk v0.45.11
+	github.com/cosmos/ibc-go/v3 v3.4.0
 	github.com/prometheus/client_golang v1.13.0
 	github.com/spf13/cast v1.5.0
-	github.com/spf13/cobra v1.5.0
-	github.com/tendermint/tendermint v0.34.22
+	github.com/spf13/cobra v1.6.1
+	github.com/tendermint/tendermint v0.34.23
 	github.com/tendermint/tm-db v0.6.7
 )
 
@@ -74,7 +74,7 @@ require (
 	github.com/improbable-eng/grpc-web v0.14.1 // indirect
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/jmhodges/levigo v1.0.0 // indirect
-	github.com/klauspost/compress v1.15.9 // indirect
+	github.com/klauspost/compress v1.15.11 // indirect
 	github.com/lib/pq v1.10.6 // indirect
 	github.com/libp2p/go-buffer-pool v0.1.0 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
@@ -114,12 +114,11 @@ require (
 	github.com/tendermint/go-amino v0.16.0 // indirect
 	github.com/zondax/hid v0.9.0 // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
-	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90 // indirect
-	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e // indirect
-	golang.org/x/net v0.0.0-20220906165146-f3363e06e74c // indirect
-	golang.org/x/sys v0.0.0-20220907062415-87db552b00fd // indirect
-	golang.org/x/term v0.0.0-20220722155259-a9ba230a4035 // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/crypto v0.1.0 // indirect
+	golang.org/x/net v0.1.0 // indirect
+	golang.org/x/sys v0.1.0 // indirect
+	golang.org/x/term v0.1.0 // indirect
+	golang.org/x/text v0.4.0 // indirect
 	google.golang.org/genproto v0.0.0-20220725144611-272f38e5d71b // indirect
 	google.golang.org/grpc v1.50.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
@@ -131,9 +130,18 @@ require (
 )
 
 replace (
-	// ics23 patch for dragonberry
+	// use cosmos keyring
+	github.com/99designs/keyring => github.com/cosmos/keyring v1.2.0
+
+	// dragonberry ics23 patch
 	github.com/confio/ics23/go => github.com/cosmos/cosmos-sdk/ics23/go v0.8.0
-	//github.com/cosmos/iavl => github.com/cosmos/iavl v0.17.3
+
+	// Fix upstream GHSA-h395-qcrw-5vmq vulnerability.
+	// TODO Remove it: https://github.com/cosmos/cosmos-sdk/issues/10409
+	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.8.1
+
+	// use cosmos-flavored protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
+	// use grpc compatible with cosmos-flavored protobufs
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )
